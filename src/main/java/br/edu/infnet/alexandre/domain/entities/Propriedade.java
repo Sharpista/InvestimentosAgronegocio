@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -23,16 +24,26 @@ public abstract class Propriedade {
 	    private double capitalNecessario;
 	    private String imagemPropriedade;
 	    private Boolean investimentoDeRisco;
-		@ManyToMany
+
+		@OneToMany(mappedBy = "propriedadesInvestidas", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 		private List<Investidor> investidores;
-		@ManyToOne
+
+		@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+		@JoinColumn(name = "proprietario_id")
 		private Proprietario proprietario;
 
 
 
 	public Propriedade() {
-
+		this.investidores = new ArrayList<>();
 	}
 
+	public void AddInvestidor(Investidor investidor) {
+		if (this.investidores == null) {
+			this.investidores = new ArrayList<>();
+		}
+		this.investidores.add(investidor);
+		investidor.setPropriedadesInvestidas(this);
+	}
 	public abstract double calcularRetorno();
 }

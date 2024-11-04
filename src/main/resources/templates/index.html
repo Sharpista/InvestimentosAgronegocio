@@ -13,27 +13,28 @@
 </div>
 
 <div class="container mt-4">
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Buscar propriedades..." aria-label="Buscar propriedades" aria-describedby="button-search">
-        <button class="btn btn-primary" type="button" id="button-search">Buscar</button>
-    </div>
+    <form action="#" th:action="@{/propriedades/search}" method="get" class="input-group mb-3">
+        <input type="text" name="query" class="form-control" placeholder="Buscar propriedades..." aria-label="Buscar propriedades" aria-describedby="button-search" required>
+        <button class="btn btn-primary" type="submit" id="button-search">Buscar</button>
+    </form>
 </div>
 
 <div class="container">
     <div class="row row-cols-1 row-cols-md-3 g-4">
-        <!-- Loop Thymeleaf para renderizar os cards -->
         <div class="col" th:each="propriedade : ${propriedades}">
             <div class="card h-100">
                 <img th:src="${propriedade.imagemPropriedade}" class="card-img-top" th:alt="${propriedade.nome}">
                 <div class="card-body">
-                    <h5 class="card-title" th:text="${propriedade.nome}">Título da Propriedade</h5>
+                    <h5 class="card-title" th:text="${propriedade.nome}"></h5>
                     <hr>
-                    <p class="card-text" th:text="${propriedade.capitalNecessario}">Descrição breve da propriedade</p>
-                    <p class="card-text" th:text="${propriedade.localizacao}">Descrição breve da propriedade</p>
-                    <p class="card-text" th:text="${propriedade.descricao}">Descrição breve da propriedade</p>
-                    <p class="card-text" th:text="${propriedade.proprietario.nome}">Descrição breve da propriedade</p>
-                    <p class="card-text">Investimento de Risco ?</p><span class="badge text-bg-primary">Primary</span>
-
+                    <p><strong>Capital necessário para investimentos</strong></p>
+                    <p class="card-text" th:text="${propriedade.capitalNecessario}"></p>
+                    <hr>
+                    <p class="card-text" th:text="${propriedade.localizacao}"></p>
+                    <p class="card-text">Investimento de Risco?</p>
+                    <span th:class="${propriedade.investimentoDeRisco ? 'badge text-bg-danger' : 'badge text-bg-success'}">
+                            <span th:text="${propriedade.investimentoDeRisco ? 'Sim' : 'Não'}"></span>
+                    </span>
                 </div>
             </div>
         </div>

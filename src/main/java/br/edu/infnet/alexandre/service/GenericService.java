@@ -39,4 +39,6 @@ public class GenericService<T, ID extends Serializable> implements IGerericServi
     public void deleteById(ID id) {
         repository.deleteById(id);
     }
+
+
 }

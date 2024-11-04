@@ -20,15 +20,21 @@ public class Investidor {
     private String telefone;
     private String imagem;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
-    private List<Propriedade> propriedadesInvestidas;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "carteira_id")
+    private Carteira carteira;
+
+    @ManyToOne
+    @JoinColumn(name = "propriedade_id")
+    private Propriedade propriedadesInvestidas;
 
 
     public Investidor() {
 
     }
-    public void adicionarPropriedadeInvestida(Propriedade propriedade) {
-        propriedadesInvestidas.add(propriedade);
+
+    public void addCarteira(Carteira carteira) {
+        this.carteira = carteira;
     }
 
 }

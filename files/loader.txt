@@ -1,7 +1,8 @@
+INVESTIDOR; JAMES GUNN;james@gmail.com;9999999991;https://th.bing.com/th/id/R.adebbe1b1d147a1e94861613210690bc?rik=LpnzzKHjZuAeCQ&pid=ImgRaw&r=0
+INVESTIDOR; ELON MUSK;elonmusk@gmail.com;9999999992;https://www.thefamouspeople.com/profiles/images/elon-musk-1.jpg
+INVESTIDOR; XI JIPING;xijiping@cn.com;9999999993;https://th.bing.com/th/id/OIP._7exO63GpLaecbYUZ9tHpgAAAA?rs=1&pid=ImgDetMain
 PROPRIETARIO;ALEXANDRE ROBERTO
 PROPRIETARIO;ROBERTO ALEXANDRE
 PROPRIETARIO;MAICON ROBERTO
 PROPRIETARIO;RAIAM ROBERTO
-INVESTIDOR; JAMES GUNN;james@gmail.com;9999999991;https://th.bing.com/th/id/R.adebbe1b1d147a1e94861613210690bc?rik=LpnzzKHjZuAeCQ&pid=ImgRaw&r=0
-INVESTIDOR; ELON MUSK;elonmusk@gmail.com;9999999992;https://www.thefamouspeople.com/profiles/images/elon-musk-1.jpg
-INVESTIDOR; XI JIPING;xijiping@cn.com;9999999993;https://th.bing.com/th/id/OIP._7exO63GpLaecbYUZ9tHpgAAAA?rs=1&pid=ImgDetMain
+"RELACIONAMENTO"
