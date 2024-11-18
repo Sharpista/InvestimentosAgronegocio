@@ -1,7 +1,9 @@
 package br.edu.infnet.alexandre.domain.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,6 +18,8 @@ public class Investidor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
+    private String descricao;
+
     private String email;
     private String telefone;
     private String imagem;
@@ -24,17 +28,16 @@ public class Investidor {
     @JoinColumn(name = "carteira_id")
     private Carteira carteira;
 
-    @ManyToOne
-    @JoinColumn(name = "propriedade_id")
-    private Propriedade propriedadesInvestidas;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @JoinColumn(name = "idInvestidor")
+    @JsonManagedReference
+    private List<Propriedade> propriedadesInvestidas;
+
+
 
 
     public Investidor() {
 
-    }
-
-    public void addCarteira(Carteira carteira) {
-        this.carteira = carteira;
     }
 
 }

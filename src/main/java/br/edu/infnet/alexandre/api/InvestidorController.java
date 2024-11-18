@@ -2,15 +2,21 @@ package br.edu.infnet.alexandre.api;
 
 import br.edu.infnet.alexandre.domain.entities.Investidor;
 import br.edu.infnet.alexandre.service.InvestidorService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
 @RestController
-@RequestMapping("v1/api/investidores")
+@RequestMapping("/v1/api/investidores")
 public class InvestidorController {
+
 
     private  final InvestidorService investidorService;
 
@@ -18,6 +24,12 @@ public class InvestidorController {
     public InvestidorController(InvestidorService investidorService) {
         this.investidorService = investidorService;
     }
+
+    @Operation(summary = "Recupera todos os investidores existentes.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Sucesso"),
+            @ApiResponse(responseCode = "500", description = "Erro interno do sistema")
+    })
 
     @GetMapping
     public List<Investidor> GetAllInvestidores() {
@@ -38,9 +50,9 @@ public class InvestidorController {
         this.investidorService.save(investidor);
     }
 
-    @DeleteMapping
-    public void DeleteInvestidor(@RequestBody Investidor investidor) {
-        this.investidorService.deleteById(investidor.getId());
+    @DeleteMapping("/{id}")
+    public void DeleteInvestidor(@PathVariable int id) {
+        this.investidorService.deleteById(id);
     }
 
 

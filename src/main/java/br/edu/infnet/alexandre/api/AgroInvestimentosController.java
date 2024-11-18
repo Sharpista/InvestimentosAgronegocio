@@ -2,10 +2,12 @@ package br.edu.infnet.alexandre.api;
 
 import br.edu.infnet.alexandre.service.InvestidorService;
 import br.edu.infnet.alexandre.service.PropriedadeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 @Controller
 public class AgroInvestimentosController {
@@ -15,6 +17,7 @@ public class AgroInvestimentosController {
     private  final PropriedadeService propriedadeService;
 
 
+    @Autowired
     public AgroInvestimentosController(InvestidorService investidorService, PropriedadeService propriedadeService) {
         this.investidorService = investidorService;
         this.propriedadeService = propriedadeService;
@@ -23,13 +26,14 @@ public class AgroInvestimentosController {
     @GetMapping("/")
     public String index(Model model) {
 
-        var propriedades = propriedadeService.findAll();
-        model.addAttribute("propriedades", propriedades );
+        var investidores = investidorService.findAll();
+        model.addAttribute("investidores", investidores);
         return "index";
     }
 
-    @GetMapping("investidores/minha-carteira")
-    public String minhaCarteira(@RequestParam("id") String id, Model model) {
+
+    @GetMapping("investidores/detalhes/{id}")
+    public String minhaCarteira(@PathVariable String id, Model model) {
 
         var investidor = investidorService.findById(Integer.valueOf(id)).get();
         var saldos = investidorService.getSaldoCarteira(Integer.parseInt(id));
@@ -41,13 +45,26 @@ public class AgroInvestimentosController {
         model.addAttribute("saldoReal", investidor.getCarteira().getSaldoCarteira());
         model.addAttribute("saldoEuro", saldos.getLast());
 
-        return "minha-carteira";
+        return "detalhes";
     }
 
-    @GetMapping("/propriedades/search")
-    public  String search(@RequestParam("query") String query, Model model) {
-        var propriedades = propriedadeService.findById(Integer.valueOf(query)).get();
+    @GetMapping("/propriedades")
+    public  String getPropriedades(Model model) {
+        var propriedades = propriedadeService.findAll();
         model.addAttribute("propriedades", propriedades );
-        return "index";
+        return "propriedades";
     }
+
+    @GetMapping("propriedades/detalhes/{id}")
+    public  String getPropriedadesDetalhes(@PathVariable String id, Model model) {
+        var propriedade = propriedadeService.findById(Integer.valueOf(id)).get();
+
+        model.addAttribute("investidores", propriedade.getInvestidor());
+        model.addAttribute("nome", propriedade.getNome());
+        model.addAttribute("valorInvestimento", propriedade.getCapitalNecessario());
+        model.addAttribute("proprietarios", propriedade.getProprietario());
+
+        return "detalhes-propriedades";
+    }
+
 }

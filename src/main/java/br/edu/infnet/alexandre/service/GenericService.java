@@ -17,27 +17,49 @@ public class GenericService<T, ID extends Serializable> implements IGerericServi
 
     @Override
     public List<T> findAll() {
-        return (List<T>) repository.findAll();
+        try{
+            return repository.findAll();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public Optional<T> findById(ID id) {
-        return repository.findById(id);
+        try {
+            return repository.findById(id);
+
+        }catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void save(T entity) {
-        repository.save(entity);
+        try {
+            repository.save(entity);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void update(T entity) {
-        repository.save(entity);
+        try {
+            repository.save(entity);
+        }catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void deleteById(ID id) {
-        repository.deleteById(id);
+        try {
+            repository.deleteById(id);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
 

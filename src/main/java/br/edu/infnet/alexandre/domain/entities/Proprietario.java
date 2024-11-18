@@ -1,5 +1,6 @@
 package br.edu.infnet.alexandre.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,17 +19,10 @@ public class Proprietario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  int id;
     private  String nome;
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "propriedade_id")
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @JoinColumn(name = "idProprietario")
+    @JsonManagedReference
     private List<Propriedade> propriedades;
-
-
-    public void AddPropriedade(Propriedade propriedade){
-        if(this.propriedades == null){
-            this.propriedades = new ArrayList<>();
-        }
-        this.propriedades.add(propriedade);
-    }
-
 
 }

@@ -1,6 +1,6 @@
-INVESTIDOR; JAMES GUNN;james@gmail.com;9999999991;https://th.bing.com/th/id/R.adebbe1b1d147a1e94861613210690bc?rik=LpnzzKHjZuAeCQ&pid=ImgRaw&r=0
-INVESTIDOR; ELON MUSK;elonmusk@gmail.com;9999999992;https://www.thefamouspeople.com/profiles/images/elon-musk-1.jpg
-INVESTIDOR; XI JIPING;xijiping@cn.com;9999999993;https://th.bing.com/th/id/OIP._7exO63GpLaecbYUZ9tHpgAAAA?rs=1&pid=ImgDetMain
+INVESTIDOR; JAMES GUNN;Roteirista, diretor, produtor, ator e músico americano;james@gmail.com;9999999991;https://th.bing.com/th/id/R.adebbe1b1d147a1e94861613210690bc?rik=LpnzzKHjZuAeCQ&pid=ImgRaw&r=0
+INVESTIDOR; ELON MUSK;Elon Musk é um empreendedor sul-africano  É hoje uma das pessoas mais ricas do mundo.;elonmusk@gmail.com;9999999992;https://www.thefamouspeople.com/profiles/images/elon-musk-1.jpg
+INVESTIDOR; XI JIPING;Xi Jinping é um político chinês. Secretário-geral do Partido Comunista Chinês (PCCh) desde 2012 e presidente da China desde 2013;xijiping@cn.com;9999999993;https://th.bing.com/th/id/OIP._7exO63GpLaecbYUZ9tHpgAAAA?rs=1&pid=ImgDetMain
 PROPRIETARIO;ALEXANDRE ROBERTO
 PROPRIETARIO;ROBERTO ALEXANDRE
 PROPRIETARIO;MAICON ROBERTO

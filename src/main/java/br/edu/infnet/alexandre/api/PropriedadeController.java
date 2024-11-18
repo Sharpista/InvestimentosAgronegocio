@@ -1,6 +1,9 @@
 package br.edu.infnet.alexandre.api;
 import br.edu.infnet.alexandre.domain.entities.Propriedade;
 import br.edu.infnet.alexandre.service.PropriedadeService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("v1/api/propriedades")
+@RequestMapping("/v1/api/propriedades")
 public class PropriedadeController {
 
     private  final PropriedadeService propriedadeService;
@@ -17,6 +20,12 @@ public class PropriedadeController {
     public PropriedadeController(PropriedadeService propriedadeService) {
         this.propriedadeService = propriedadeService;
     }
+
+    @Operation(summary = "Recupera todos os propriedades existentes.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Sucesso"),
+            @ApiResponse(responseCode = "500", description = "Erro interno do sistema")
+    })
 
     @GetMapping
     public List<Propriedade> GetAllPropriedades() {
@@ -37,8 +46,8 @@ public class PropriedadeController {
         this.propriedadeService.save(propriedade);
     }
 
-    @DeleteMapping
-    public void DeletePropriedade(@RequestBody Propriedade propriedade) {
-        this.propriedadeService.deleteById(propriedade.getId());
+    @DeleteMapping("/{id}")
+    public void DeletePropriedade(@PathVariable int id) {
+        this.propriedadeService.deleteById(id);
     }
 }

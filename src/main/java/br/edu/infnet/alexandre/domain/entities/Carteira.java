@@ -15,8 +15,4 @@ public class Carteira {
     private Integer id;
 
     private double saldoCarteira;
-
-    @OneToOne
-    @JoinColumn(name = "investidor_id")
-    private Investidor investidor;
 }

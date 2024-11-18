@@ -11,7 +11,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/}">Investimentos em Agronegocios</a>
+        <a class="navbar-brand" th:href="@{/}">Propriedades</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
             <span class="navbar-toggler-icon"></span>
@@ -19,7 +19,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/propriedades}">Propriedades</a>
+                    <a class="nav-link" th:href="@{/}">Inicio</a>
                 </li>
             </ul>
         </div>
@@ -27,24 +27,26 @@
 </nav>
 
 <div class="container mt-5">
-    <h1 class="mb-4">Lista de Investidores</h1>
+    <h1 class="mb-4">Lista de Propriedades</h1>
     <table class="table table-striped">
         <thead>
         <tr>
             <th>ID</th>
             <th>Nome</th>
-            <th>Email</th>
-            <th>Ações</th>
+            <th>Investimento de Risco</th>
         </tr>
         </thead>
         <tbody>
-        <!-- Iteração Thymeleaf -->
-        <tr th:each="investidor : ${investidores}">
-            <td th:text="${investidor.id}"></td>
-            <td th:text="${investidor.nome}"></td>
-            <td th:text="${investidor.email}"></td>
+        <tr th:each="propriedade : ${propriedades}">
+            <td th:text="${propriedade.id}"></td>
+            <td th:text="${propriedade.nome}"></td>
             <td>
-                <a class="btn btn-info btn-sm text-white" th:href="@{/investidores/detalhes/{id}(id=${investidor.id})}">
+                <span th:class="${propriedade.investimentoDeRisco ? 'badge text-bg-danger' : 'badge text-bg-success'}">
+                            <span th:text="${propriedade.investimentoDeRisco ? 'Sim' : 'Não'}"></span>
+               </span>
+            </td>
+            <td>
+                <a class="btn btn-info btn-sm text-white" th:href="@{/propriedades/detalhes/{id}(id=${propriedade.id})}">
                     Detalhes
                 </a>
             </td>
@@ -57,3 +59,5 @@
 </body>
 
 </html>
+
+
