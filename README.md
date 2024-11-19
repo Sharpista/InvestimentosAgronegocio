@@ -30,12 +30,12 @@ Antes de rodar a aplicação, você precisa ter instalado em sua máquina:
    ```bash
    [git clone https://github.com/seu-usuario/seu-repositorio.git](https://github.com/Sharpista/InvestimentosAgronegocio.git)
 
-2. **Entre no diretório do projeto:
+2. **Entre no diretório do projeto**:
 
     cd seu-repositorio
 
-3. **Compile e execute o projeto:
+3. **Compile e execute o projeto**:
     mvn spring-boot:run
-4. **Acesse a aplicação no navegador:
+4. **Acesse a aplicação no navegador**:
 
    http://localhost:8080
